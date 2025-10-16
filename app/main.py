@@ -9,6 +9,7 @@ import pyxel
 
 from objects.player import Player
 from objects.map_manager import MapManager
+from objects.enemy import Enemy, StrongEnemy, FastEnemy
 from assets.maps import ROOM_DATA
 
 
@@ -42,6 +43,10 @@ class App:
 
         # Game Objects
         self.player = Player(1, 1, health=3, player_speed=self.TILE_SIZE)
+        self.enemies = [
+            StrongEnemy(self, 10, 5, room_id="START_ROOM"),
+            FastEnemy(self, 5, 5, room_id="BOSS_ROOM"),
+        ]
 
         pyxel.run(self.update, self.draw)
 
@@ -133,6 +138,10 @@ class App:
         else:
             self.handle_movement()
 
+        # Update enemies
+        for enemy in self.enemies:
+            enemy.update()
+
     def draw(self):
         """Called 30 times per second to draw the screen."""
         pyxel.cls(0) # Clear screen to black (COLOR_BLACK)
@@ -150,6 +159,17 @@ class App:
 
         # 3. Draw the player sprite
         self.player.draw(x_override=player_screen_x, y_override=player_screen_y)
+
+        # Draw enemies
+        for enemy in self.enemies:
+            if enemy.room_id == self.map_manager.current_room_id:
+                if self.map_manager.transition_state == "SCROLLING":
+                    enemy_screen_x = (enemy.x_tile * self.TILE_SIZE) - self.map_manager.scroll_offset_x
+                    enemy_screen_y = (enemy.y_tile * self.TILE_SIZE) - self.map_manager.scroll_offset_y
+                else:
+                    enemy_screen_x = enemy.x_tile * self.TILE_SIZE
+                    enemy_screen_y = enemy.y_tile * self.TILE_SIZE
+                enemy.draw(x_override=enemy_screen_x, y_override=enemy_screen_y)
 
         # Debug: Display current room info
         if self.map_manager.transition_state == "SCROLLING":
