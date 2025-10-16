@@ -1,3 +1,10 @@
+# title: Rocket's Revenge
+# author: Beau Severson
+# desc: A Pyxel dungeon crawler test
+# site: https://github.com/bseverson/rockets_revenge
+# license: MIT
+# version: 1.0
+
 import pyxel
 
 from objects.player import Player
