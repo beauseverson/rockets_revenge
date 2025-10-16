@@ -1,0 +1,29 @@
+version = 1
+revision = 3
+requires-python = ">=3.13.7"
+
+[[package]]
+name = "pyxel"
+version = "2.5.8"
+source = { registry = "https://pypi.org/simple" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/0c/95/616ef7890dbe00a8eac06947d3e8e9559ff00ace860e4acb0fe21bc56e0f/pyxel-2.5.8-cp38-abi3-macosx_10_12_x86_64.whl", hash = "sha256:17b48d6077326c892f14f48cf0acae90534d630f0406d0d9ecaf5f7a6117b4e8", size = 4806886, upload-time = "2025-10-03T13:52:45.186Z" },
+    { url = "https://files.pythonhosted.org/packages/9f/fc/9f664cb94c7e682aa0c53ca90af7242a451558debe6c933371b1a8e3d091/pyxel-2.5.8-cp38-abi3-macosx_11_0_arm64.whl", hash = "sha256:027f04877419e3eb6ae5c0adb9a0751373edfdbf20ab91d8014c3fb6fe3205a5", size = 4531387, upload-time = "2025-10-03T13:52:47.903Z" },
+    { url = "https://files.pythonhosted.org/packages/e3/c9/9300b87cd18666df7d5425a0e370fbf245b05ead95fc904fbd2b1049d151/pyxel-2.5.8-cp38-abi3-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:b1d386b7a50b56a040beaa7e04f1294a0a3639c77dce5d994b187e3b12b8983b", size = 4250489, upload-time = "2025-10-03T13:52:49.078Z" },
+    { url = "https://files.pythonhosted.org/packages/cf/0e/3c9b7a276e6679b0349c1a09cec25406590c64cfd0954864db19d2411bd4/pyxel-2.5.8-cp38-abi3-manylinux_2_17_armv7l.manylinux2014_armv7l.whl", hash = "sha256:c08a45788e611fc0f15bc8daae470acdb269a14520decdf358548254ef227edc", size = 4259571, upload-time = "2025-10-03T13:52:51.685Z" },
+    { url = "https://files.pythonhosted.org/packages/5c/43/9fdfce85d623828bf4d1089ecb01e67dd119d6da7ac60bee5cca6e4accde/pyxel-2.5.8-cp38-abi3-manylinux_2_17_i686.manylinux2014_i686.whl", hash = "sha256:756ea7061443ac3856b258179a4bd4bc6cceb62240af445452c5987cb0859fce", size = 4683824, upload-time = "2025-10-03T13:52:52.984Z" },
+    { url = "https://files.pythonhosted.org/packages/b0/19/d78d51e5c8f8c7a2158aab8bdad5ef08bc64646bb98dd4b0e56e89915536/pyxel-2.5.8-cp38-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:b9f56ce73fd9b3611521599a4f53b03bf889ae6145861529e1d0f4b52e1b0f54", size = 4422297, upload-time = "2025-10-03T13:52:54.393Z" },
+    { url = "https://files.pythonhosted.org/packages/e5/9f/60f7ffa886b934057cf090fe7547a1edeaa84fb9851cd0622537652c0f39/pyxel-2.5.8-cp38-abi3-win32.whl", hash = "sha256:44fc7c80287df3cc66dfcfa54bf4a9f833c3b1fc3143edae5ce3a37d129119e9", size = 4326835, upload-time = "2025-10-03T13:52:56.192Z" },
+    { url = "https://files.pythonhosted.org/packages/33/ce/6469e5e41ecfd5a75ce45365dc3878ffd18587db044846106e001c00b2ef/pyxel-2.5.8-cp38-abi3-win_amd64.whl", hash = "sha256:173df145480f1c8788a81d21cbb47940dbbc836a22fa541113ce074ecdc0f157", size = 4542824, upload-time = "2025-10-03T13:52:57.451Z" },
+]
+
+[[package]]
+name = "rockets-revenge"
+version = "0.1.0"
+source = { virtual = "." }
+dependencies = [
+    { name = "pyxel" },
+]
+
+[package.metadata]
+requires-dist = [{ name = "pyxel", specifier = ">=2.5.8" }]
