@@ -1,12 +1,16 @@
+# title: Rocket's Revenge
+# author: Beau Severson
+# desc: A Pyxel dungeon crawler demo game
+# site: https://github.com/beauseverson/rockets_revenge
+# license: MIT
+# version: 1.0
+
 import pyxel
 
 from objects.player import Player
 from objects.map_manager import MapManager
 from objects.enemy import Enemy, StrongEnemy, FastEnemy
 from assets.maps import ROOM_DATA
-
-
-# --- Constants ---
 
 class App:
     # App Globals
