@@ -8,11 +8,12 @@ class Enemy:
         self.x_tile = x_tile
         self.y_tile = y_tile
         self.room_id = room_id  # controls what room the enemy exists in
-        self.is_alive = True
+        self.state = 'alive'  # alive, dying, dead
         self.max_health = max_health
         self.health = max_health
         self.move_speed = move_speed  # tiles per second
         self.move_timer = 0
+        self.y_velocity = 0
 
         # Sprite properties
         self.sprite_bank = 0
@@ -22,8 +23,19 @@ class Enemy:
         self.height = 8
 
     def update(self):
-        """Update enemy logic, like movement."""
-        if not self.is_alive or self.room_id != self.app.map_manager.current_room_id:
+        """Update enemy logic, like movement and death animation."""
+        if self.state == 'dead':
+            return
+
+        if self.state == 'dying':
+            self.y_velocity += 0.25  # Gravity
+            self.y_tile += self.y_velocity
+
+            if self.y_tile * self.app.TILE_SIZE > self.app.SCREEN_H:
+                self.state = 'dead'
+            return
+
+        if self.room_id != self.app.map_manager.current_room_id:
             return
 
         # Simple random movement logic
@@ -40,26 +52,32 @@ class Enemy:
 
     def draw(self, x_override: int = None, y_override: int = None):
         """Draw the enemy at the specified screen coordinates."""
-        if self.is_alive and self.room_id == self.app.map_manager.current_room_id:
-            screen_x = x_override if x_override is not None else self.x_tile * self.app.TILE_SIZE
-            screen_y = y_override if y_override is not None else self.y_tile * self.app.TILE_SIZE
+        if self.state == 'dead':
+            return
 
-            pyxel.blt(
-                screen_x,
-                screen_y,
-                self.sprite_bank,
-                self.sprite_u,
-                self.sprite_v,
-                self.width,
-                self.height,
-                pyxel.COLOR_BLACK
-            )
+        screen_x = x_override if x_override is not None else self.x_tile * self.app.TILE_SIZE
+        screen_y = y_override if y_override is not None else self.y_tile * self.app.TILE_SIZE
+
+        pyxel.blt(
+            screen_x,
+            screen_y,
+            self.sprite_bank,
+            self.sprite_u,
+            self.sprite_v,
+            self.width,
+            self.height,
+            pyxel.COLOR_BLACK
+        )
 
     def take_damage(self, amount):
         """Reduces health by the specified amount and checks for death."""
+        if self.state != 'alive':
+            return
+
         self.health -= amount
         if self.health <= 0:
-            self.is_alive = False
+            self.state = 'dying'
+            self.y_velocity = -1  # Pop up
 
     def heal(self, amount):
         """Increases health by the specified amount."""

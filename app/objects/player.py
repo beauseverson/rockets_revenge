@@ -8,8 +8,8 @@ class Player:
         self.height = 8   # Player height in pixels
         self.health = health  # Player's health
         self.player_speed = player_speed  # Player speed in pixels per move
-        self.sprite_bank = 0  # Image bank for the sprite
-        self.sprite_u = 24    # U (x) coordinate for sprite sheet
+        self.sprite_bank = 1  # Image bank for the sprite
+        self.sprite_u = 0    # U (x) coordinate for sprite sheet
         self.sprite_v = 0   # V (y) coordinate for sprite sheet
         self.is_moving = False  # Flag to prevent multiple moves per frame
 
@@ -41,5 +41,5 @@ class Player:
             self.sprite_v,
             self.width,
             self.height,
-            pyxel.COLOR_BLACK
+            pyxel.COLOR_RED
         )

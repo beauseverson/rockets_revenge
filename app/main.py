@@ -1,10 +1,3 @@
-# title: Rocket's Revenge
-# author: Beau Severson
-# desc: A Pyxel dungeon crawler test
-# site: https://github.com/bseverson/rockets_revenge
-# license: MIT
-# version: 1.0
-
 import pyxel
 
 from objects.player import Player
@@ -142,9 +135,15 @@ class App:
         for enemy in self.enemies:
             enemy.update()
 
+        # Test death animation
+        if pyxel.btnp(pyxel.KEY_SPACE):
+            for enemy in self.enemies:
+                if enemy.room_id == self.map_manager.current_room_id:
+                    enemy.take_damage(1)
+
     def draw(self):
         """Called 30 times per second to draw the screen."""
-        pyxel.cls(0) # Clear screen to black (COLOR_BLACK)
+        pyxel.cls(0) # Clear screen to black (COLOR_BLACK) 
         
         self.map_manager.draw()
 
@@ -162,7 +161,7 @@ class App:
 
         # Draw enemies
         for enemy in self.enemies:
-            if enemy.room_id == self.map_manager.current_room_id:
+            if enemy.state == 'dying' or enemy.room_id == self.map_manager.current_room_id:
                 if self.map_manager.transition_state == "SCROLLING":
                     enemy_screen_x = (enemy.x_tile * self.TILE_SIZE) - self.map_manager.scroll_offset_x
                     enemy_screen_y = (enemy.y_tile * self.TILE_SIZE) - self.map_manager.scroll_offset_y
