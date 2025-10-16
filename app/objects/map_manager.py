@@ -21,6 +21,8 @@ class MapManager:
         self.target_room_id = None # ID of the room we are scrolling into
         self.next_player_pos = (1, 1) # Player's target tile in the new room
 
+        self.load_resources()
+
     def _update_transition(self):
         """Handles the smooth room scrolling transition."""
         speed = self.SCROLL_SPEED
@@ -52,6 +54,8 @@ class MapManager:
         """Finalizes the transition and moves to the new room."""
         # Update current room state
         self.current_room_id = self.target_room_id
+
+        # move the apps player to the new position
         self.app.player.x_tile, self.app.player.y_tile = self.next_player_pos
 
         # Reset transition variables

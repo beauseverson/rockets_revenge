@@ -21,10 +21,11 @@ ROOM_DATA = {
             1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
             1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
             1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
-            1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
+            1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
         ],
-        "neighbors": {"R": "MIDDLE_HALL"},
+        "neighbors": {"R": "MIDDLE_HALL", "D": "OUTSIDE"},
         "tm_offset_y": 0, # Starts at row 0
+        "tm_offset_x": 0, # In case we want horizontal offsets later
     },
     "MIDDLE_HALL": {
         # Layout: Exit left at (0, 7) and right at (19, 7)
@@ -48,6 +49,7 @@ ROOM_DATA = {
         "neighbors": {"L": "START_ROOM", "R": "BOSS_ROOM"},
         # Starts immediately after START_ROOM (15 rows) = row 15
         "tm_offset_y": 15,
+        "tm_offset_x": 0, # In case we want horizontal offsets later
     },
     "BOSS_ROOM": {
         # Layout: Exit left at (0, 7)
@@ -71,5 +73,30 @@ ROOM_DATA = {
         "neighbors": {"L": "MIDDLE_HALL"},
         # Starts immediately after MIDDLE_HALL (15 rows) = row 30
         "tm_offset_y": 30,
+        "tm_offset_x": 0, # In case we want horizontal offsets later
+    },
+    "OUTSIDE": {
+        # Layout: Exit down at (10, 14)
+        "map_data": [
+            1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+            1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
+            1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
+            1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
+            1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
+            1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
+            1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
+            1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
+            1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
+            1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
+            1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
+            1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
+            1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
+            1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
+            1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
+        ],
+        "neighbors": {"U": "START_ROOM"},
+        # Starts immediately after BOSS_ROOM (15 rows) = row 45
+        "tm_offset_y": 45,
+        "tm_offset_x": 0, # In case we want horizontal offsets later
     }
 }
